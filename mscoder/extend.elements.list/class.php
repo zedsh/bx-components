@@ -6,7 +6,7 @@ use Bitrix\Main\Localization\Loc as Loc;
 
 require __DIR__. "/config.php";
 
-class StandardElementListComponent extends CBitrixComponent
+class ExtendElementsListComponent extends CBitrixComponent
 {
 	/**
 	 * кешируемые ключи arResult
