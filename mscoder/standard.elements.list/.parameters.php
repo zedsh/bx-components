@@ -5,11 +5,12 @@ use Bitrix\Main;
 use Bitrix\Main\Localization\Loc as Loc;
 
 Loc::loadMessages(__FILE__); 
+require __DIR__ . "/config.php";
 
 try
 {
 	if (!Main\Loader::includeModule('iblock'))
-		throw new Main\LoaderException(Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_IBLOCK_MODULE_NOT_INSTALLED'));
+		throw new Main\LoaderException(Loc::getMessage($config["lang_prefix"] . 'IBLOCK_MODULE_NOT_INSTALLED'));
 	
 	$iblockTypes = \CIBlockParameters::GetIBlockTypes(Array("-" => " "));
 	
@@ -30,15 +31,15 @@ try
 	}
 	
 	$sortFields = array(
-		'ID' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_ID'),
-		'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_NAME'),
-		'ACTIVE_FROM' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_ACTIVE_FROM'),
-		'SORT' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_SORT')
+		'ID' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_ID'),
+		'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_NAME'),
+		'ACTIVE_FROM' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_ACTIVE_FROM'),
+		'SORT' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_SORT')
 	);
 	
 	$sortDirection = array(
-		'ASC' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_ASC'),
-		'DESC' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_DESC')
+		'ASC' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_ASC'),
+		'DESC' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_DESC')
 	);
 	
 	$arComponentParameters = array(
@@ -47,7 +48,7 @@ try
 		'PARAMETERS' => array(
 			'IBLOCK_TYPE' => Array(
 				'PARENT' => 'BASE',
-				'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_IBLOCK_TYPE'),
+				'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_IBLOCK_TYPE'),
 				'TYPE' => 'LIST',
 				'VALUES' => $iblockTypes,
 				'DEFAULT' => '',
@@ -55,49 +56,49 @@ try
 			),
 			'IBLOCK_ID' => array(
 				'PARENT' => 'BASE',
-				'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_IBLOCK_ID'),
+				'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_IBLOCK_ID'),
 				'TYPE' => 'LIST',
 				'VALUES' => $iblocks
 			),
             'IBLOCK_CODE' => array(
                 'PARENT' => 'BASE',
-                'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_IBLOCK_CODE'),
+                'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_IBLOCK_CODE'),
                 'TYPE' => 'LIST',
                 'VALUES' => $iblocksCode
             ),
 			'SHOW_NAV' => array(
 				'PARENT' => 'BASE',
-				'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SHOW_NAV'),
+				'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SHOW_NAV'),
 				'TYPE' => 'CHECKBOX',
 				'DEFAULT' => 'N'
 			),
 			'COUNT' =>  array(
 				'PARENT' => 'BASE',
-				'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_COUNT'),
+				'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_COUNT'),
 				'TYPE' => 'STRING',
 				'DEFAULT' => '0'
 			),
 			'SORT_FIELD1' => array(
 				'PARENT' => 'BASE',
-				'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_FIELD1'),
+				'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_FIELD1'),
 				'TYPE' => 'LIST',
 				'VALUES' => $sortFields
 			),
 			'SORT_DIRECTION1' => array(
 				'PARENT' => 'BASE',
-				'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_DIRECTION1'),
+				'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_DIRECTION1'),
 				'TYPE' => 'LIST',
 				'VALUES' => $sortDirection
 			),
 			'SORT_FIELD2' => array(
 				'PARENT' => 'BASE',
-				'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_FIELD2'),
+				'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_FIELD2'),
 				'TYPE' => 'LIST',
 				'VALUES' => $sortFields
 			),
 			'SORT_DIRECTION2' => array(
 				'PARENT' => 'BASE',
-				'NAME' => Loc::getMessage('STANDARD_ELEMENTS_LIST_PARAMETERS_SORT_DIRECTION2'),
+				'NAME' => Loc::getMessage($config["lang_prefix"] . 'PARAMETERS_SORT_DIRECTION2'),
 				'TYPE' => 'LIST',
 				'VALUES' => $sortDirection
 			),

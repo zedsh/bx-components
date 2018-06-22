@@ -4,6 +4,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 use Bitrix\Main;
 use Bitrix\Main\Localization\Loc as Loc;
 
+require __DIR__. "/config.php";
+
 class StandardElementListComponent extends CBitrixComponent
 {
 	/**
@@ -126,7 +128,7 @@ class StandardElementListComponent extends CBitrixComponent
 	protected function checkModules()
 	{
 		if (!Main\Loader::includeModule('iblock'))
-			throw new Main\LoaderException(Loc::getMessage('STANDARD_ELEMENTS_LIST_CLASS_IBLOCK_MODULE_NOT_INSTALLED'));
+			throw new Main\LoaderException(Loc::getMessage($config["lang_prefix"] . 'IBLOCK_MODULE_NOT_INSTALLED'));
 	}
 	
 	/**
